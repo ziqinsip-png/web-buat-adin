@@ -1,0 +1,6 @@
+{
+  "name": "Surat Kecil Untukmu",
+  "description": "Sebuah ruang digital intim dan surat cinta khusus yang didedikasikan untuk seseorang yang paling istimewa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
