@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Settings2, X, Check, RotateCcw, Film, Image as ImageIcon, Music, HelpCircle } from 'lucide-react';
 import {
   VIDEO_1_URL,
-  VIDEO_2_URL,
   PHOTO_1_URL,
   PHOTO_2_URL,
   PHOTO_3_URL,
   PHOTO_4_URL,
+  PHOTO_5_URL,
   MUSIC_URL,
 } from '../config/siteConfig';
 
@@ -24,9 +24,6 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
   const [video1, setVideo1] = useState(
     () => localStorage.getItem('romantic_site_video1') || VIDEO_1_URL
   );
-  const [video2, setVideo2] = useState(
-    () => localStorage.getItem('romantic_site_video2') || VIDEO_2_URL
-  );
   const [photo1, setPhoto1] = useState(
     () => localStorage.getItem('romantic_site_photo1') || PHOTO_1_URL
   );
@@ -39,6 +36,9 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
   const [photo4, setPhoto4] = useState(
     () => localStorage.getItem('romantic_site_photo4') || PHOTO_4_URL
   );
+  const [photo5, setPhoto5] = useState(
+    () => localStorage.getItem('romantic_site_photo5') || PHOTO_5_URL
+  );
   const [music, setMusic] = useState(
     () => localStorage.getItem('romantic_site_music') || MUSIC_URL
   );
@@ -48,11 +48,11 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
 
   const handleSave = () => {
     localStorage.setItem('romantic_site_video1', video1);
-    localStorage.setItem('romantic_site_video2', video2);
     localStorage.setItem('romantic_site_photo1', photo1);
     localStorage.setItem('romantic_site_photo2', photo2);
     localStorage.setItem('romantic_site_photo3', photo3);
     localStorage.setItem('romantic_site_photo4', photo4);
+    localStorage.setItem('romantic_site_photo5', photo5);
     localStorage.setItem('romantic_site_music', music);
 
     setSavedSuccess(true);
@@ -71,15 +71,16 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
       'photo2',
       'photo3',
       'photo4',
+      'photo5',
       'music',
     ].forEach((k) => localStorage.removeItem(`romantic_site_${k}`));
 
     setVideo1(VIDEO_1_URL);
-    setVideo2(VIDEO_2_URL);
     setPhoto1(PHOTO_1_URL);
     setPhoto2(PHOTO_2_URL);
     setPhoto3(PHOTO_3_URL);
     setPhoto4(PHOTO_4_URL);
+    setPhoto5(PHOTO_5_URL);
     setMusic(MUSIC_URL);
     onRefresh();
     onClose();
@@ -116,8 +117,8 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
           <HelpCircle className="w-4 h-4 text-[#e8d5b5] shrink-0 mt-0.5" />
           <div>
             <span className="font-medium text-[#faf5ee]">Tips:</span> Anda dapat
-            memasukkan tautan langsung (MP4 untuk video, JPG/PNG untuk foto, MP3 untuk musik),
-            atau menyematkan tautan YouTube / Vimeo / Google Drive. Anda juga bisa mengedit langsung di berkas{' '}
+            memasukkan tautan langsung (MP4 untuk video, JPG/PNG untuk foto, MP3 untuk musik).
+            Perubahan dapat disimpan langsung di sini atau diedit di berkas{' '}
             <code className="text-[#e8d5b5]">src/config/siteConfig.ts</code>.
           </div>
         </div>
@@ -128,37 +129,22 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
           <div>
             <label className="flex items-center gap-2 text-xs font-medium text-[#d48b97] mb-1.5">
               <Film className="w-3.5 h-3.5" />
-              <span>Video 1 (Momen yang ingin kusimpan)</span>
+              <span>Video Kenangan (Momen yang ingin kusimpan)</span>
             </label>
             <input
               type="text"
-              placeholder="Tautan Video 1 (MP4 / YouTube / Drive)"
+              placeholder="Tautan Video (MP4)"
               value={video1}
               onChange={(e) => setVideo1(e.target.value)}
               className="w-full px-3.5 py-2 rounded-lg bg-[#0c0408] border border-white/10 text-xs text-[#faf5ee] placeholder:text-white/30 focus:border-[#d48b97] focus:outline-hidden"
             />
           </div>
 
-          {/* Video 2 */}
-          <div>
-            <label className="flex items-center gap-2 text-xs font-medium text-[#d48b97] mb-1.5">
-              <Film className="w-3.5 h-3.5" />
-              <span>Video 2 (Tentang kita, dalam potongan kecil)</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Tautan Video 2 (MP4 / YouTube / Drive)"
-              value={video2}
-              onChange={(e) => setVideo2(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-lg bg-[#0c0408] border border-white/10 text-xs text-[#faf5ee] placeholder:text-white/30 focus:border-[#d48b97] focus:outline-hidden"
-            />
-          </div>
-
-          {/* Photo 1-4 */}
+          {/* Photo 1-5 */}
           <div className="pt-2 border-t border-white/10">
             <span className="flex items-center gap-2 text-xs font-medium text-[#d48b97] mb-2">
               <ImageIcon className="w-3.5 h-3.5" />
-              <span>4 Foto Galeri Kenangan</span>
+              <span>5 Foto Galeri Kenangan</span>
             </span>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -190,6 +176,13 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
                 onChange={(e) => setPhoto4(e.target.value)}
                 className="w-full px-3 py-1.5 rounded-lg bg-[#0c0408] border border-white/10 text-xs text-[#faf5ee] placeholder:text-white/30 focus:border-[#d48b97] focus:outline-hidden"
               />
+              <input
+                type="text"
+                placeholder="Foto 5 URL"
+                value={photo5}
+                onChange={(e) => setPhoto5(e.target.value)}
+                className="w-full px-3 py-1.5 rounded-lg bg-[#0c0408] border border-white/10 text-xs text-[#faf5ee] placeholder:text-white/30 focus:border-[#d48b97] focus:outline-hidden sm:col-span-2"
+              />
             </div>
           </div>
 
@@ -197,7 +190,7 @@ export const MediaSettingsModal: React.FC<MediaSettingsModalProps> = ({
           <div className="pt-2 border-t border-white/10">
             <label className="flex items-center gap-2 text-xs font-medium text-[#d48b97] mb-1.5">
               <Music className="w-3.5 h-3.5" />
-              <span>Tautan Musik Latar (URL MP3 / Audio Stream)</span>
+              <span>Tautan Musik Latar (URL MP3)</span>
             </label>
             <input
               type="text"

@@ -7,7 +7,7 @@ import { PhotoLightbox } from './PhotoLightbox';
 export const PhotoGallery: React.FC = () => {
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
 
-  // Map exactly 4 photos using configuration
+  // Map 5 photos using configuration
   const photos = siteContent.gallery.photos.map((item) => ({
     id: item.id,
     url: getMediaUrl(item.urlKey as any),
@@ -16,7 +16,7 @@ export const PhotoGallery: React.FC = () => {
     aspect: item.aspect,
   }));
 
-  // Varied rotations and alignments for handcrafted scrapbook aesthetic
+  // Varied rotations and alignments for 5-photo scrapbook aesthetic (2 on top, 3 below)
   const layoutStyles = [
     {
       colSpan: 'sm:col-span-6 lg:col-span-6',
@@ -31,16 +31,22 @@ export const PhotoGallery: React.FC = () => {
       tapePosition: '-top-3 right-10 rotate-[2deg]',
     },
     {
-      colSpan: 'sm:col-span-6 lg:col-span-6',
+      colSpan: 'sm:col-span-6 lg:col-span-4',
       rotation: 'rotate-1.5 hover:rotate-0',
       aspectClass: 'aspect-[4/5] sm:aspect-[3/4]',
-      tapePosition: '-top-3 left-12 rotate-[4deg]',
+      tapePosition: '-top-3 left-10 rotate-[4deg]',
     },
     {
-      colSpan: 'sm:col-span-6 lg:col-span-6',
+      colSpan: 'sm:col-span-6 lg:col-span-4',
       rotation: '-rotate-1 hover:rotate-0',
       aspectClass: 'aspect-[4/5] sm:aspect-[3/4]',
-      tapePosition: '-top-3 right-12 rotate-[-2deg]',
+      tapePosition: '-top-3 right-8 rotate-[-2deg]',
+    },
+    {
+      colSpan: 'sm:col-span-12 lg:col-span-4 flex justify-center',
+      rotation: 'rotate-1 hover:rotate-0',
+      aspectClass: 'aspect-[4/5] sm:aspect-[3/4] max-w-[400px] sm:max-w-none w-full',
+      tapePosition: '-top-3 left-12 rotate-[3deg]',
     },
   ];
 
@@ -81,8 +87,8 @@ export const PhotoGallery: React.FC = () => {
         </motion.p>
       </div>
 
-      {/* Exactly 4-Photo Editorial Scrapbook Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center">
+      {/* 5-Photo Editorial Scrapbook Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-10 sm:gap-12 items-start">
         {photos.map((photo, index) => {
           const style = layoutStyles[index] || layoutStyles[0];
 
@@ -92,8 +98,8 @@ export const PhotoGallery: React.FC = () => {
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.8, delay: index * 0.12 }}
-              className={`${style.colSpan} flex justify-center`}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className={`${style.colSpan}`}
             >
               <div
                 onClick={() => setActivePhotoIndex(index)}

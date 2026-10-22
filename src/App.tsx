@@ -33,7 +33,7 @@ export default function App() {
 
   // Clean up any stale fallback URLs from localStorage on mount
   useEffect(() => {
-    ['video1', 'video2', 'photo1', 'photo2', 'photo3', 'photo4', 'music'].forEach((k) => {
+    ['video1', 'video2', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'music'].forEach((k) => {
       const v = localStorage.getItem(`romantic_site_${k}`);
       if (
         v &&
@@ -42,11 +42,14 @@ export default function App() {
           v.includes('mixkit') ||
           v.includes('freesound') ||
           v.includes('streamable.com') ||
+          v.includes('1792339392086') ||
+          v.includes('IMG-20261018') ||
           (v.includes('i.ibb.co/') && !v.includes('i.ibb.co.com/')))
       ) {
         localStorage.removeItem(`romantic_site_${k}`);
       }
     });
+    localStorage.removeItem('romantic_site_video2');
   }, []);
 
   // Initialize background audio element once

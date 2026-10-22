@@ -6,24 +6,24 @@
 // ==========================================
 // 1. MEDIA URL CONFIGURATION
 // ==========================================
-export const VIDEO_1_URL = "https://www.image2url.com/r2/default/videos/1792339392086-afdf548f-9ba1-4669-bacc-9f55275eb007.mp4";
-export const VIDEO_2_URL = "/video2_rotated.mp4";
+export const VIDEO_1_URL = "https://www.image2url.com/r2/default/videos/1792648289176-fb8089ed-54b9-4aa0-9c0e-d259b0dd375b.mp4";
 
-export const PHOTO_1_URL = "https://i.ibb.co.com/PsydxvRL/IMG-20261018-WA0155.jpg";
-export const PHOTO_2_URL = "https://i.ibb.co.com/DPzF5m58/IMG-20261018-WA0154.jpg";
-export const PHOTO_3_URL = "https://i.ibb.co.com/LX8qRJmG/Screenshot-20261010-124933-Tik-Tok.jpg";
-export const PHOTO_4_URL = "https://i.ibb.co.com/CpCVSDVC/Screenshot-20261008-191535-Instagram.jpg";
+export const PHOTO_1_URL = "https://i.ibb.co.com/0ybHkdhm/IMG-20261022-WA0045.jpg";
+export const PHOTO_2_URL = "https://i.ibb.co.com/xtsJ1Wgy/IMG-20261022-WA0043.jpg";
+export const PHOTO_3_URL = "https://i.ibb.co.com/rgk1hPd/IMG-20261022-WA0047.jpg";
+export const PHOTO_4_URL = "https://i.ibb.co.com/9QkVNNW/IMG-20261022-WA0042.jpg";
+export const PHOTO_5_URL = "https://i.ibb.co.com/yc38yD49/IMG-20261022-WA0048.jpg";
 
 export const MUSIC_URL = "https://feeldreams.github.io/audio/angelbaby.mp3";
 
 // Fallbacks
 export const DEMO_FALLBACKS = {
   video1: VIDEO_1_URL,
-  video2: VIDEO_2_URL,
   photo1: PHOTO_1_URL,
   photo2: PHOTO_2_URL,
   photo3: PHOTO_3_URL,
   photo4: PHOTO_4_URL,
+  photo5: PHOTO_5_URL,
   music: MUSIC_URL,
 };
 
@@ -48,40 +48,32 @@ export const siteContent = {
     scrollHint: "Gulir perlahan",
   },
 
-  // Video 1 Section
-  video1: {
+  // Video Section (Single special video)
+  video: {
     caption: "Momen yang ingin kusimpan",
-    title: "Detik yang Ingin Kuhentikan",
+    title: "Dalam Setiap Detik yang Tenang",
     description:
-      "Ada saat-saat di mana aku hanya ingin menatapmu sedikit lebih lama. Menikmati caramu berbicara, caramu tertawa lepas, dan menyadari betapa beruntungnya aku memiliki seseorang sepertimu di sampingku.",
+      "Ada saat-saat sederhana di mana aku hanya ingin menatapmu sedikit lebih lama. Menikmati caramu berbicara, caramu tertawa lepas, dan menyadari betapa bersyukurnya aku memiliki kamu yang selalu melengkapi hariku.",
   },
 
-  // Video 2 Section
-  video2: {
-    caption: "Tentang kita, dalam potongan kecil",
-    title: "Tempat Pulang yang Sebenarnya",
-    description:
-      "Dunia di luar mungkin sering kali melelahkan dan bising. Tapi bersamamu, segalanya selalu terasa lebih tenang. Terima kasih sudah menjadi tempat di mana aku selalu merasa cukup dan diterima apa adanya.",
-  },
-
-  // 4-Photo Memory Gallery
+  // 5-Photo Memory Gallery
   gallery: {
     sectionTag: "Galeri Kenangan",
-    sectionTitle: "Empat Potret, Beribu Syukur",
+    sectionTitle: "Lima Potret, Beribu Syukur",
     sectionDescription:
-      "Setiap gambar mungkin hanya menangkap satu detik, namun rasanya bertahan selamanya di ingatanku.",
+      "Setiap gambar menyimpan satu detik berharga yang tak pernah ingin kulupakan.",
     photos: [
       {
         id: 1,
         urlKey: "photo1",
-        caption: "Senyummu yang selalu punya cara tersendiri untuk meredakan hari-hariku yang berat.",
+        caption: "Senyummu yang selalu punya cara sederhana untuk meredakan segala lelahku.",
         date: "Tatap yang Menenangkan",
         aspect: "portrait",
       },
       {
         id: 2,
         urlKey: "photo2",
-        caption: "Bahkan dalam kesederhanaan, kamu selalu terlihat paling istimewa di mataku.",
+        caption: "Bahkan dalam detik paling biasa, bersamamu selalu terasa istimewa.",
         date: "Sudut Favoritku",
         aspect: "portrait",
       },
@@ -89,13 +81,20 @@ export const siteContent = {
         id: 3,
         urlKey: "photo3",
         caption: "Bukan tentang ke mana kita melangkah, tapi tentang dengan siapa aku berjalan.",
-        date: "Potongan Bahagia",
+        date: "Langkah Bersama",
         aspect: "portrait",
       },
       {
         id: 4,
         urlKey: "photo4",
-        caption: "Terima kasih untuk setiap tawa, cerita, dan waktu yang kamu bagi bersamaku.",
+        caption: "Terima kasih sudah selalu jadi tempat paling nyaman untuk pulang.",
+        date: "Tempat Ternyaman",
+        aspect: "portrait",
+      },
+      {
+        id: 5,
+        urlKey: "photo5",
+        caption: "Untuk hari ini, esok, dan seterusnya—aku selalu memilih kamu.",
         date: "Selalu dan Seterusnya",
         aspect: "portrait",
       },
@@ -136,31 +135,33 @@ export const siteContent = {
 /**
  * Helper to get the effective media URL
  */
-export function getMediaUrl(key: 'video1' | 'video2' | 'photo1' | 'photo2' | 'photo3' | 'photo4' | 'music'): string {
+export function getMediaUrl(key: 'video1' | 'photo1' | 'photo2' | 'photo3' | 'photo4' | 'photo5' | 'music'): string {
   const rawMap: Record<string, string> = {
     video1: VIDEO_1_URL,
-    video2: VIDEO_2_URL,
     photo1: PHOTO_1_URL,
     photo2: PHOTO_2_URL,
     photo3: PHOTO_3_URL,
     photo4: PHOTO_4_URL,
+    photo5: PHOTO_5_URL,
     music: MUSIC_URL,
   };
 
   if (typeof window !== 'undefined') {
     const custom = localStorage.getItem(`romantic_site_${key}`);
     if (custom && custom.trim().length > 0) {
-      // Discard stale placeholders or old fallback assets
       if (
         !custom.startsWith('PASTE_') &&
         !custom.includes('unsplash') &&
         !custom.includes('mixkit') &&
-        !custom.includes('streamable.com')
+        !custom.includes('streamable.com') &&
+        !custom.includes('video2_rotated') &&
+        !custom.includes('1792339392086') &&
+        !custom.includes('IMG-20261018')
       ) {
         return custom.trim();
       }
     }
   }
 
-  return rawMap[key] || DEMO_FALLBACKS[key];
+  return rawMap[key] || (DEMO_FALLBACKS as any)[key];
 }
